@@ -39,4 +39,5 @@ This endpoint should fetch the 10 closest cars from the database and return them
 - We suggest you to save this content in a database, so you can sort and filter them easily.
 - The endpoint should return the correct status codes for a success request and a failed one.
 - Use this repository to build your solution.
+- The solution should perform well regardless of the number of records
 - Don't forget the instructions for testing and running the code.
