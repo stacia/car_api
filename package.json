@@ -1,5 +1,5 @@
 {
-    "name": "node-api",
+    "name": "car-api",
     "main": "server.js",
     "dependencies": {
         "express": "~4.0.0",
@@ -8,5 +8,10 @@
         "mongoose-seed": "0.1.5",
         "geolib": "2.0.17",
         "latlng": "1.0.0"
+    },
+    "devDependencies": {
+      "mocha": "*",
+      "chai": "*",
+      "supertest": "*"
     }
 }

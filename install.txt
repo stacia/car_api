@@ -1,0 +1,19 @@
+CAR API README problem for Ally
+
+Node and mongo need to be installed. 
+
+Run npm install
+
+Run node seeder.js to seed Mongo.
+
+Run make test to run chai tests.
+
+Run node server.js to make queries against it.
+
+HAVE FUN!!!!
+
+Thoughts on this project. I decided to use Node because it is less overhead for simple API end points.
+
+I am relying heavily on the performance of Mongo and the NPM geolib. If performance was an issue these
+would be the bottlenecks. I did not see a performance issue in the seed data I had but I don't know
+about scaling.

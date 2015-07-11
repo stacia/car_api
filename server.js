@@ -62,6 +62,7 @@ router.get('/cars', function(req, res) {
      }
 
      else {
+        res.status(500);
         res.json({ error: "No location or bad input" });   
      };
 });
