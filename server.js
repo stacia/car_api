@@ -10,7 +10,7 @@ var port = process.env.PORT || 8080;
 // Start Server
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Server booted on ' + port);
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/car-api'); 
@@ -32,7 +32,6 @@ router.get('/cars', function(req, res) {
 
     var loc = require('url').parse(req.url,true).query.location;  // Parse out location in form location=51.521707,-0.166881 
     var lat_and_long = loc ? require('latlng')(loc) : "none"; //Convert to lat/long obj
-    console.log(lat_and_long);
 
     if (loc && lat_and_long) { 
       
@@ -46,8 +45,18 @@ router.get('/cars', function(req, res) {
           mixedCoords[coord.description] = { "latitude" : coord.latitude, "longitude" : coord.longitude };
         });
 
-        var distances = geolib.orderByDistance(lat_and_long, mixedCoords)
-        res.json({ "cars" : distances.slice(0,9) });   
+        var distances = geolib.orderByDistance(lat_and_long, mixedCoords);
+
+        //Shorten and reformat
+        var shortened_distances = []
+        for (i = 0; i < 10; i++) { 
+          shortened_distances.push({ "description" : distances[i].key, 
+                                     "latitude" : distances[i].latitude,
+                                     "longitude" : distances[i].longitude} );
+        };
+
+        //Output cars!!
+        res.json({ "cars" : shortened_distances });   
         });
         
      }
